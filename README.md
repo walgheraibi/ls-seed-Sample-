@@ -1,2 +1,2 @@
-# OCTR
-LabShare for OCTR
+# OSCTR
+LabShare for OSCTR
