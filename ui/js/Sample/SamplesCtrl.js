@@ -65,7 +65,7 @@ define(['angular'], (function () {
                 };
             }
                     $scope.profile = {
-                        diseaseType: "Unilateral",
+                        diseaseType: "",
                         age: "",
                         gender: "",
                         ethnicity: "",
@@ -79,74 +79,123 @@ define(['angular'], (function () {
                     var firstRightAdd = true
                     var firstAdd = true
 
-            $scope.addItem = function () {
+            $scope.addItem = function (ev) {
 
                 if ($scope.eye == "Right") {
-                    if (!($scope.profile.righteye.indexOf(self.selectedItem.display) > -1)) {
+                    if ($scope.profile.righteye.length >= 1) {
+                        if (!($scope.profile.righteye.indexOf(self.selectedItem.display) > -1)) {
+                            var confirm = $mdDialog.confirm()
+                                .title(' Add another disease')
+                                .content('Are you sure you want to add another disease?')
+                                .ariaLabel('Lucky day')
+                                .ok('Please add!')
+                                .cancel('Cancel')
+                                .targetEvent(ev);
+                            $mdDialog.show(confirm).then(function () {
+                                $scope.profile.righteye.push(self.selectedItem.display)
+                            });
+                        }
+                        else
+                        {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                    .title('This disease is already added')
+                                    .content('You can not add the same disease twice')
+                                    .ok('Got it!')
+                                    .targetEvent(ev)
+                            );
+                    };
+                    }
+                    if ($scope.profile.righteye.length < 1) {
                         $scope.profile.righteye.push(self.selectedItem.display)
                     }
-                   /*if($scope.profile.righteye.length>0)
-                    $mdToast.show({
-                        controller: 'ToastCtrl',
-                        templateUrl: 'toast-template.html',
-                        hideDelay: 6000
-                    });*/
                 }
-                else if($scope.eye == "Left")
-                {
-                if (!($scope.profile.lefteye.indexOf(self.selectedItem.display) > -1)) {
-                    $scope.profile.lefteye.push(self.selectedItem.display)
+                    else if ($scope.eye == "Left") {
+
+                    if ($scope.profile.lefteye.length >= 1) {
+                        if (!($scope.profile.lefteye.indexOf(self.selectedItem.display) > -1)) {
+                            var confirm = $mdDialog.confirm()
+                                .title(' Add another disease')
+                                .content('Are you sure you want to add another disease?')
+                                .ariaLabel('Lucky day')
+                                .ok('Please add!')
+                                .cancel('Cancel')
+                                .targetEvent(ev);
+                            $mdDialog.show(confirm).then(function () {
+                                $scope.profile.lefteye.push(self.selectedItem.display)
+                            });
+                        }
+                        else {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                    .title('This disease is already added')
+                                    .content('You can not add the same disease twice')
+                                    .ok('Got it!')
+                                    .targetEvent(ev)
+                            );
+                        }
+                        ;
+                    }
+                    if ($scope.profile.lefteye.length < 1) {
+                        $scope.profile.lefteye.push(self.selectedItem.display)
+                    }
                 }
-            }
-                else if($scope.eye == "Both")
-                {
-                    if (!($scope.profile.botheye.indexOf(self.selectedItem.display) > -1)) {
+                    else if ($scope.eye == "Both") {
+
+
+                    if ($scope.profile.botheye.length >= 1) {
+                        if (!($scope.profile.botheye.indexOf(self.selectedItem.display) > -1)) {
+                            var confirm = $mdDialog.confirm()
+                                .title(' Add another disease')
+                                .content('Are you sure you want to add another disease?')
+                                .ariaLabel('Lucky day')
+                                .ok('Please add!')
+                                .cancel('Cancel')
+                                .targetEvent(ev);
+                            $mdDialog.show(confirm).then(function () {
+                                $scope.profile.botheye.push(self.selectedItem.display)
+                            });
+                        }
+                        else {
+                            $mdDialog.show(
+                                $mdDialog.alert()
+                                    .title('This disease is already added')
+                                    .content('You can not add the same disease twice')
+                                    .ok('Got it!')
+                                    .targetEvent(ev)
+                            );
+                        }
+                        ;
+                    }
+                    if ($scope.profile.botheye.length < 1) {
                         $scope.profile.botheye.push(self.selectedItem.display)
                     }
                 }
-
-            }
-
-
-                 /*   $scope.addLeftEye = function() {
-                        if ($scope.symptom.length > 0 && firstLeftAdd) {
-                            firstLeftAdd = false
-                            $scope.profile.lefteye.push("Lift eye:")
-                        }
-                        for (var i = 0; i < $scope.symptom.length; i++) {
-                            $scope.profile.lefteye.push($scope.symptom[i])
-                        }
-                    }
-                    $scope.addRightEye = function(){
-                        if($scope.symptom.length>0 && firstRightAdd)
-                        {
-                            firstRightAdd = false
-                            $scope.profile.righteye.push("Right eye:")
-                        }
-                        for (var i = 0; i < $scope.symptom.length; i++) {
-                            $scope.profile.righteye.push($scope.symptom[i])
-                        }
-                    }
-                    $scope.addBothEye = function(){
-                        if($scope.symptom.length>0 && firstAdd)
-                        {
-                            firstAdd = false
-                            $scope.profile.botheye.push("Billateral eye:")
-                        }
-                        for (var i = 0; i < $scope.symptom.length; i++) {
-                            $scope.profile.botheye.push($scope.symptom[i])
-                        }
-                    }
-                    */
-                    $scope.cleanSelection = function(){
+            };
+            $scope.cleanSelection = function(){
                         $scope.profile.lefteye = [];
                         $scope.profile.righteye = [];
                         $scope.profile.botheye = [];
                     }
-  }).controller('ToastCtrl', function($scope, $mdToast) {
-            $scope.closeToast = function() {
-                $mdToast.hide();
+
+            $scope.showConfirm = function(ev) {
+                // Appending dialog to document.body to cover sidenav in docs app
+                var confirm = $mdDialog.confirm()
+                    .title(' Add another disease')
+                    .content('Are you sure you want to add another disease?')
+                    .ariaLabel('Lucky day')
+                    .ok('Please add!')
+                    .cancel('Cancel')
+                    .targetEvent(ev);
+                $mdDialog.show(confirm).then(function() {
+                    $scope.alert = 'You decided to get rid of your debt.';
+                }, function() {
+                    $scope.alert = 'You decided to keep your debt.';
+                });
             };
+            $scope.submit= function(){
+
+            }
         }).controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log) {
             $scope.close = function() {
                 $mdSidenav('left').close()
@@ -171,3 +220,5 @@ define(['angular'], (function () {
             };
         });
 }));
+
+

@@ -12,8 +12,13 @@
                             <md-radio-button value="Bilateral" > Bilateral </md-radio-button>
                             <md-radio-button value="Unilateral"> Unilateral </md-radio-button>
                         </div>
-
                     </md-radio-group>
+                </md-input-container>
+                </div>
+                <div layout-gt-sm="row">
+                    <md-input-container >
+                        <label>Disease locaitan</label>
+                    </md-input-container>
                     <md-radio-group flex ng-model="eye">
                         <div layout-gt-sm="row" >
                             <md-radio-button value="Right" > Right Eye </md-radio-button>
@@ -43,7 +48,7 @@
 
 
 
-            <div class="form-group">
+      <!--      <div class="form-group">
                 <label class="control-label col-sm-1"></label>
                 <div class="col-sm-11">
                     <div class="well well-lg">
@@ -54,6 +59,54 @@
                 </div>
             </div>
 
+--> </br>
+            <md-grid-list
+                    flex wrap
+                    md-cols-sm="1" md-cols-md="1" md-cols-gt-md="6"
+                    md-row-height-gt-md="1:1" md-row-height="2:1"
+                    md-gutter="12px" md-gutter-gt-sm="8px" >
+                <div flex>
+            <md-grid-tile class="gray"
+                          md-rowspan="fit" md-colspan="2">
+
+                <ol >
+                    <li class="lefteye" ng-repeat="item in profile.lefteye">
+                        {{ item }}
+                    </li>
+                </ol>
+
+                <md-grid-tile-footer >
+                    <h3>Left eye</h3>
+                </md-grid-tile-footer>
+                </div>
+            </md-grid-tile>
+
+                <md-grid-tile  class="red" md-colspan="2"  md-rowspan="fit">
+                    <ol >
+                        <li class="righteye" ng-repeat="item in profile.righteye">
+                            {{ item }}
+                        </li>
+                    </ol>
+
+                    <md-grid-tile-footer>
+                        <h3>Right eye</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+
+                <md-grid-tile class="green" md-rowspan="fit" md-colspan="2">
+                    <ol >
+                        <li class="botheye" ng-repeat="item in profile.botheye">
+                            {{ item }}
+                        </li>
+                    </ol>
+                    <md-grid-tile-footer>
+                        <h3>Both eyes</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+
+            </md-grid-list>
+
+</br>
             <div class="form-group">
                 <div flex layout-gt-sm="row">
                     <md-button flex class="md-raised" ng-click="cleanSelection()">
@@ -77,7 +130,7 @@
             </md-input-container>
             <md-input-container>
                 <md-radio-group flex>
-                    <div layout-gt-sm="row">
+                    <div layout-gt-sm="row" value="profile.gender">
                     <md-radio-button value="Male"> Male </md-radio-button>
                     <md-radio-button value="Female"> Female </md-radio-button>
                         <md-radio-button value="Other"> Other </md-radio-button>
@@ -106,11 +159,12 @@
                     <label>Comment</label>
                     <input type="Text">
                 </md-input-container>
-                <div layout-gt-sm="row">
-                <md-button flex class="md-raised md-primary">Submit</md-button>
-                    </div>
-            </div>
 
+                <div layout-gt-sm="row">
+                <md-button flex class="md-raised md-primary" ng-submit="submit()">Submit</md-button>
+                    </div>
+
+            </div>
         </form>
         <div>
 

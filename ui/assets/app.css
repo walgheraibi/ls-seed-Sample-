@@ -128,3 +128,15 @@ span.name {
   font-size:1.1em;
   padding-left:5px;
 }
+
+.red{
+  background: #CCFFFF;
+}
+
+.green {
+  background: #b9f6ca;
+}
+
+.gray {
+  background: #f5f5f5;
+}
