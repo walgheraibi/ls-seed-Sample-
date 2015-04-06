@@ -1,0 +1,118 @@
+<div ng-app="Samples" ng-controller="SamplesCtrl as ctrl" layout="column">
+    <md-content class="md-padding" layout="column">
+        <form ng-submit="$event.preventDefault()">
+            <h1>Sample Submission</h1>
+            <div layout-gt-sm="row">
+                <md-input-container >
+                    <label>Disease</label>
+                </md-input-container>
+                <md-input-container>
+                    <md-radio-group flex ng-model="hideRadio">
+                        <div layout-gt-sm="row">
+                            <md-radio-button value="Bilateral" > Bilateral </md-radio-button>
+                            <md-radio-button value="Unilateral"> Unilateral </md-radio-button>
+                        </div>
+
+                    </md-radio-group>
+                    <md-radio-group flex ng-model="eye">
+                        <div layout-gt-sm="row" >
+                            <md-radio-button value="Right" > Right Eye </md-radio-button>
+                            <md-radio-button value="Left"> Left Eye </md-radio-button>
+                            <md-radio-button value="Both"ng-hide="hideRadio == 'Unilateral'"> Both Eyes </md-radio-button>
+                        </div>
+                    </md-radio-group>
+                </md-input-container>
+            </div>
+
+            <div layout-gt-sm="row" >
+                <md-autocomplete flex
+                                 ng-disabled="ctrl.isDisabled"
+                                 md-no-cache="ctrl.noCache"
+                                 md-selected-item="ctrl.selectedItem"
+                                 md-search-text="ctrl.searchText"
+                                 md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                 md-item-text="item.display"
+                                 md-floating-label="Favorite state">
+                    <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
+                </md-autocomplete>
+                <md-button class="md-primary" ng-click="addItem($event)">
+                    Add
+                </md-button>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-1"></label>
+                <div class="col-sm-11">
+                    <div class="well well-lg">
+                        <p> Left eye:{{profile.lefteye}}</p>
+                        <p> Right eye: {{profile.righteye}}</p>
+                        <p> Both eyes: {{profile.botheye}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div flex layout-gt-sm="row">
+                    <md-button flex class="md-raised" ng-click="cleanSelection()">
+                        Clean Selection
+                    </md-button>
+                </div>
+            </div>
+           <!-- <div layout-gt-sm="row">
+                <md-list>
+                    <md-item ng-repeat="item in todos">
+                        <md-item-content>
+                            <p>
+                                {{item}}
+                            </p>
+                        </md-item-content>
+                    </md-item>
+                </md-list>
+            </div>-->
+            <md-input-container>
+                <label>Gender</label>
+            </md-input-container>
+            <md-input-container>
+                <md-radio-group flex>
+                    <div layout-gt-sm="row">
+                    <md-radio-button value="Male"> Male </md-radio-button>
+                    <md-radio-button value="Female"> Female </md-radio-button>
+                        <md-radio-button value="Other"> Other </md-radio-button>
+                    </div>
+                </md-radio-group>
+            </md-input-container>
+
+            <div >
+                <div layout-gt-sm="row" >
+
+                    <md-select flex placeholder="Ethnicity" ng-model="Ethnicity">
+                        <md-option value="1">Mixed Race</md-option>
+                        <md-option value="2">Arctic (Siberian, Eskimo)</md-option>
+                        <md-option value="3">Caucasian (European)</md-option>
+                        <md-option value="4">Caucasian (Indian)</md-option>
+                        <md-option value="5">Caucasian (Middle East)</md-option>
+                        <md-option value="6">Indigenous Australian</md-option>
+                        <md-option value="7">Native American</md-option>
+                        <md-option value="8">North East Asian (Mongol, Tibetan, Korean Japanese, etc)</md-option>
+                        <md-option value="9">South East Asian (Chinese, Thai, Malay, Filipino, etc)</md-option>
+                        <md-option value="10">West African, Bushmen, Ethiopian</md-option>
+                        <md-option value="11">Other Race</md-option>
+                    </md-select>
+                </div>
+                <md-input-container flex>
+                    <label>Comment</label>
+                    <input type="Text">
+                </md-input-container>
+                <div layout-gt-sm="row">
+                <md-button flex class="md-raised md-primary">Submit</md-button>
+                    </div>
+            </div>
+
+        </form>
+        <div>
+
+        </div>
+

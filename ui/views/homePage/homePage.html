@@ -1,0 +1,21 @@
+<div ng-app="homeCtrl" ng-controller="homecontrol as ctrl" layout="column" style="padding-bottom: 15px;">
+        <div class="wrap">
+            <h1>Hello there!</h1>
+            <p>Push the radio buttons to change the content!</p>
+            <form>
+                <label>Show first content</label>
+                <input type="radio" name="content" ng-model="content" value="first">
+                <br />
+                <label for="other">Show other content</label>
+                <input id="other" type="radio" name="content" ng-model="content" >
+            </form>
+
+
+            <div class="wrapper">
+                <p ng-show="content == 'first'">This is the first content!</p>
+                <h2 ng-show="content == 'other'">This is the other content!</h2>
+            </div>
+        </div>
+    </div>
+    </div>
+
