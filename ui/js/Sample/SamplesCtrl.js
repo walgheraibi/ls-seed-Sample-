@@ -19,18 +19,18 @@ define(['angular'], (function () {
              * Search for states... use $timeout to simulate
              * remote dataservice call.
              */
-                $scope.toggleLeft = function() {
-                    $mdSidenav('left').toggle()
-                        .then(function(){
-                            $log.debug("toggle left is done");
-                        });
-                };
-                $scope.toggleRight = function() {
-                    $mdSidenav('right').toggle()
-                        .then(function(){
-                            $log.debug("toggle RIGHT is done");
-                        });
-                };
+            $scope.toggleLeft = function () {
+                $mdSidenav('left').toggle()
+                    .then(function () {
+                        $log.debug("toggle left is done");
+                    });
+            };
+            $scope.toggleRight = function () {
+                $mdSidenav('right').toggle()
+                    .then(function () {
+                        $log.debug("toggle RIGHT is done");
+                    });
+            };
 
             function querySearch(query) {
                 var results = query ? self.states.filter(createFilterFor(query)) : [];
@@ -51,7 +51,8 @@ define(['angular'], (function () {
                     };
                 });
             }
-            $scope.showElement = function(value) {
+
+            $scope.showElement = function (value) {
                 $scope.hide = true;
 
             };
@@ -64,24 +65,26 @@ define(['angular'], (function () {
                     return (state.value.indexOf(lowercaseQuery) === 0);
                 };
             }
-                    $scope.profile = {
-                        diseaseType: "",
-                        age: "",
-                        gender: "",
-                        ethnicity: "",
-                        diseaseCode: "",
-                        lefteye: [],
-                        righteye: [],
-                        botheye: [],
-                        comment: ""
-                    }
-                    var firstLeftAdd = true
-                    var firstRightAdd = true
-                    var firstAdd = true
+
+            $scope.profile = {
+                diseaseType: "",
+                eye: "",
+                age: "",
+                gender: "",
+                ethnicity: "",
+                diseaseCode: "",
+                lefteye: [],
+                righteye: [],
+                botheye: [],
+                comment: ""
+            }
+            var firstLeftAdd = true
+            var firstRightAdd = true
+            var firstAdd = true
 
             $scope.addItem = function (ev) {
 
-                if ($scope.eye == "Right") {
+                if ($scope.profile.eye == "Right") {
                     if ($scope.profile.righteye.length >= 1) {
                         if (!($scope.profile.righteye.indexOf(self.selectedItem.display) > -1)) {
                             var confirm = $mdDialog.confirm()
@@ -95,8 +98,7 @@ define(['angular'], (function () {
                                 $scope.profile.righteye.push(self.selectedItem.display)
                             });
                         }
-                        else
-                        {
+                        else {
                             $mdDialog.show(
                                 $mdDialog.alert()
                                     .title('This disease is already added')
@@ -104,13 +106,14 @@ define(['angular'], (function () {
                                     .ok('Got it!')
                                     .targetEvent(ev)
                             );
-                    };
+                        }
+                        ;
                     }
                     if ($scope.profile.righteye.length < 1) {
                         $scope.profile.righteye.push(self.selectedItem.display)
                     }
                 }
-                    else if ($scope.eye == "Left") {
+                else if ($scope.profile.eye == "Left") {
 
                     if ($scope.profile.lefteye.length >= 1) {
                         if (!($scope.profile.lefteye.indexOf(self.selectedItem.display) > -1)) {
@@ -140,7 +143,7 @@ define(['angular'], (function () {
                         $scope.profile.lefteye.push(self.selectedItem.display)
                     }
                 }
-                    else if ($scope.eye == "Both") {
+                else if ($scope.profile.eye == "Both") {
 
 
                     if ($scope.profile.botheye.length >= 1) {
@@ -171,14 +174,23 @@ define(['angular'], (function () {
                         $scope.profile.botheye.push(self.selectedItem.display)
                     }
                 }
+                else {
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .title('Affected Area')
+                            .content('please choose the affected area')
+                            .ok('OK!')
+                            .targetEvent(ev)
+                    );
+                }
             };
-            $scope.cleanSelection = function(){
-                        $scope.profile.lefteye = [];
-                        $scope.profile.righteye = [];
-                        $scope.profile.botheye = [];
-                    }
+            $scope.cleanSelection = function () {
+                $scope.profile.lefteye = [];
+                $scope.profile.righteye = [];
+                $scope.profile.botheye = [];
+            }
 
-            $scope.showConfirm = function(ev) {
+            $scope.showConfirm = function (ev) {
                 // Appending dialog to document.body to cover sidenav in docs app
                 var confirm = $mdDialog.confirm()
                     .title(' Add another disease')
@@ -187,14 +199,43 @@ define(['angular'], (function () {
                     .ok('Please add!')
                     .cancel('Cancel')
                     .targetEvent(ev);
-                $mdDialog.show(confirm).then(function() {
+                $mdDialog.show(confirm).then(function () {
                     $scope.alert = 'You decided to get rid of your debt.';
-                }, function() {
+                }, function () {
                     $scope.alert = 'You decided to keep your debt.';
                 });
             };
-            $scope.submit= function(){
 
+            $scope.submit = function (ev) {
+
+                if ($scope.profile.diseaseType != "" && $scope.profile.gender != "" && $scope.profile.ethnicity != "" && $scope.profile.eye != ""
+                    && $scope.profile.age != null && ($scope.profile.lefteye.length >= 1 || $scope.profile.righteye.length >= 1 || $scope.profile.botheye.length >= 1 )) {
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .title('Successful Submission')
+                            .content('Your submission was successful')
+                            .ok('OK!')
+                            .targetEvent(ev));
+                }
+
+                else {
+                    if ($scope.profile.age == null) {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                                .title('Error ')
+                                .content('Please make sure you enter tha age as a number')
+                                .ok('OK!')
+                                .targetEvent(ev));
+                    }
+                    else {
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                                .title('Error')
+                                .content('Please make sure you fill all the required fields' + $scope.profile.age)
+                                .ok('OK!')
+                                .targetEvent(ev));
+                    }
+                }
             }
         }).controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log) {
             $scope.close = function() {
