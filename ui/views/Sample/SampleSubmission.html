@@ -44,12 +44,12 @@
                                  md-floating-label="Favorite state">
                     <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
                 </md-autocomplete>
-                <md-button class="md-primary" ng-click="addItem($event)">
+                <md-button ng-disabled="profile.diseaseType == ''" class="md-primary" ng-click="addItem($event)">
                     Add
                 </md-button>
             </div>
 
- </br>
+            <br></br>
             <div flex>
             <md-list>
                 <md-subheader ng-show="profile.lefteye >='1'" class="md-no-sticky">Left eye</md-subheader>
@@ -181,7 +181,4 @@
 
             </div>
         </form>
-        <div>
-
-        </div>
-
+</div>
