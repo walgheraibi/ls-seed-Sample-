@@ -1,0 +1,22 @@
+body {
+  color: rgba(255, 255, 255, 0.87) !important;
+  background-color: #424242 !important; }
+  body h1, body h2, body h3, body h4, body h5, body h6, body a {
+    color: inherit; }
+
+.shell-header .logo {
+  text-decoration: none; }
+  .shell-header .logo img {
+    margin-right: 10px; }
+.shell-header .fa {
+  margin: 5px; }
+.shell-header ng-md-icon {
+  text-align: center;
+  fill: rgba(255, 255, 255, 0.87) !important; }
+.shell-header md-input-container.md-default-theme label {
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.87), -1px -1px 0px rgba(0, 0, 0, 0.87); }
+.shell-header md-input-container.md-default-theme .md-input {
+  border-bottom-color: rgba(255, 255, 255, 0.87); }
+
+.shell-side-nav .fa {
+  margin-right: 20px; }

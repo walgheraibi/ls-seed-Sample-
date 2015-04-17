@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LabShare Shell</title>
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.min.css"/>
+    <link rel="stylesheet" href="./styles/font-awesome-4.3.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="./styles/main.css"/>
+</head>
+<body layout="row">
+    <left-shell-menu></left-shell-menu>
+    <div flex layout="column">
+        <shell-header></shell-header>
+        <div flex layout="column" data-ui-view></div>
+    </div>
+    <right-shell-menu></right-shell-menu>
+    <!--<div flex layout="column" data-ui-view></div>-->
+    <script data-main="./require-config" src="bower_components/requirejs/require.js"></script>
+</body>
+</html>

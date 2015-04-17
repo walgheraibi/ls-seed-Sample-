@@ -1,0 +1,14 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2 shell-side-nav" md-component-id="left" layout="column">
+    <md-content class="md-padding md-theme-light" layout="column" flex>
+        <md-list ng-controller="MenuCtrl">
+            <md-item ng-repeat="menuItem in menuLeft">
+                <md-button ng-click="close()" ui-sref="{{menuItem.state}}" style="text-align:left;width:100%">
+                    <div layout="row" layout-align="start center">
+                        <i class="fa fa-2x fa-{{menuItem.icon}}"></i>
+                        <span flex>{{menuItem.title}}</span>
+                    </div>
+                </md-button>
+            </md-item>
+        </md-list>
+    </md-content>
+</md-sidenav>

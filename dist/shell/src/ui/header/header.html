@@ -1,0 +1,34 @@
+<div data-ng-show="shellHeader.active" flex layout="row" layout-margin class="md-default-theme shell-header" layout-align="space-between">
+    <div layout="row">
+        <a href="#/" class="logo" layout="row" layout-align="start center">
+            <img src="{{shellHeader.logo}}" style="max-height: 56px;">
+            <h1>{{shellHeader.title}}</h1>
+        </a>
+        <md-button data-ng-show="shellHeader.leftMenuActive" ng-click="toggle('left')">
+            <i class="fa fa-bars"></i>
+        </md-button>
+    </div>
+    <form class="search" role="search">
+        <div layout="row">
+            <md-input-container style="line-height:10px">
+                <label>Search</label>
+                <input type="text"
+                       data-ng-model="searchKeywords" data-ng-keyup="contextSearch()">
+            </md-input-container>
+            <md-button type="submit"><ng-md-icon size="24" icon="search"></ng-md-icon></md-button>
+        </div>
+    </form>
+    <div layout="row" layout-align="center center">
+        <div>
+            <a layout="row" layout-align="center center" href="javascript:;">
+                <div><i class="fa fa-2x fa-user"></i></div>
+                <div hide-sm>John Doe</div>
+            </a>
+        </div>
+        <div>
+            <md-button data-ng-show="shellHeader.rightMenuActive" ng-click="toggle('right')">
+                <i class="fa fa-2x fa-gear"></i>
+            </md-button>
+        </div>
+    </div>
+</div>

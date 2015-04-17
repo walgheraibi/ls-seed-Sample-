@@ -1,0 +1,56 @@
+{
+  "name": "ls-shell",
+  "version": "0.15.03",
+  "description": "LabShare Shell",
+  "private": true,
+  "main": "./src/lib/window.js",
+  "contributors": "https://github.com/LabShare/shell/graphs/contributors",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/LabShare/shell/raw/master/LICENSE.md"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LabShare/shell.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LabShare/shell/issues"
+  },
+  "dependencies": {
+    "bower-requirejs": "^1.1.3",
+    "flatiron": "^0.4.2",
+    "flatiron-cli-config": "^0.1.5",
+    "fs-plus": "^2.6.0",
+    "glob": "^5.0.3",
+    "lodash": "^3.5.0",
+    "minimist": "^1.1.1",
+    "wrench": "^1.5.8"
+  },
+  "scripts": {
+    "postinstall": "bower install --config.cwd=./src/ui",
+    "pretest": "node -e 'process.exit(0)'",
+    "test": "jasmine-node --color ./test/lib && node ./node_modules/karma/bin/karma start ./test/ui/karma.conf.js",
+    "build": "gulp --gulpfile=./build/gulpfile.js build"
+  },
+  "bin": {
+    "lsc": "./src/lib/lsc.js"
+  },
+  "devDependencies": {
+    "bower": "^1.3.12",
+    "gulp": "^3.8.11",
+    "gulp-atom-shell": "^0.1.10",
+    "jasmine-core": "^2.2.0",
+    "gulp-sass": "^1.3.3",
+    "jasmine-node": "^1.14.5",
+    "proxyquire": "^1.4.0",
+    "temp": "^0.8.1",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5",
+    "karma-jasmine-ajax": "^0.1.12",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.17"
+  }
+}

@@ -1,0 +1,26 @@
+.shell-header {
+  .logo {
+    text-decoration: none;
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  .fa {
+    margin: 5px;
+  }
+
+  ng-md-icon {
+    text-align: center;
+    fill: $hg-curr;
+  }
+  //make search menu more visible
+  md-input-container.md-default-theme {
+    label {
+      text-shadow: 1px 1px 0px $hg-light, -1px -1px 0px rgba(0,0,0,0.87);
+    }
+    .md-input {
+      border-bottom-color: $hg-light;
+    }
+  }
+}
