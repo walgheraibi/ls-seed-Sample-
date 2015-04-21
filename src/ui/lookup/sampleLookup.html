@@ -1,0 +1,24 @@
+{{helloworld}}
+
+<table class="table table-responsive table-hover table-bordered table-striped" ng-controller="OSCTR.samplelookupCtrl">
+    <thead>
+    <tr>
+        <th>Uni/Bi</th>
+        <th>Disease</th>
+        <th>Code</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Ethnicity</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="it in stores">
+        <td>{{it.Uni}}</td>
+        <td>{{it.Disease}}</td>
+        <td>{{it.Code}}</td>
+        <td>{{it.Gender}}</td>
+        <td>{{it.Age}}</td>
+        <td>{{it.Ethnicity}}</td>
+    </tr>
+    </tbody>
+</table>

@@ -11,7 +11,6 @@ define([
             $stateProvider.state('OSCTR-sample', {
                 url: 'OSCTR/sample',
                 templateUrl: 'ui/sampleModule/sample.html',
-                controller: 'OSCTR.sampleController',
                 title: 'sample'
             });
         }]).config(['MenuProvider', function(MenuProvider) {

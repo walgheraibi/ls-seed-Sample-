@@ -2,7 +2,7 @@
  * Created by weaamalgheraibi on 4/17/15.
  */
 define(['./module'], function(module) {
-    return module.controller('OSCTR.sampleController', ['$scope', function ($timeout, $q, $scope,  $mdSidenav, $log, $mdDialog, $mdToast, $animate) {
+    return module.controller('OSCTR.sampleController', ['$scope', '$timeout', '$q', '$mdSidenav', '$log', '$mdDialog', '$mdToast', '$animate', function ($scope, $timeout, $q, $mdSidenav, $log, $mdDialog, $mdToast, $animate) {
         var self = this;
         // list of `state` value/display objects
         self.states = loadAll();
@@ -26,9 +26,11 @@ define(['./module'], function(module) {
          * Build `states` list of key/value pairs
          */
         function loadAll() {
-            var stepType = 'Wet AMD, artery occlusion, OU, ' +
-                'intermediate , large drusen, pigment change,  large drusen , 20/20 vision,  neovascularization, ' +
-                'Dry AMD , CNV , GA';
+            var stepType = 'Age-related macular degeneration (AMD) - advanced (geographic atrophy), Age-related macular degeneration (AMD) - intermediate, Age-related macular degeneration (AMD) - early, ' +
+            'Age-related macular degeneration (AMD) - choroidal neovascularization (CNV), late-onset retinal degeneration (L-ORD), Best vitelliform macular dystrophy (Best disease), ' +
+            'Stargardt\'s disease, Albinism, Coloboma, Microphthalmia, Anophthalmia';
+
+
             return stepType.split(/, +/g).map(function (state) {
                 return {
                     value: state.toLowerCase(),
@@ -45,8 +47,9 @@ define(['./module'], function(module) {
                 return (state.value.indexOf(lowercaseQuery) === 0);
             };
         }
-/*
-        $scope.profile = {
+
+
+       $scope.profile = {
             diseaseType: "",
             eye: "",
             age: "",
@@ -59,11 +62,10 @@ define(['./module'], function(module) {
             comment: ""
         }
 
-        var firstLeftAdd = true
-        var firstRightAdd = true
-        var firstAdd = true
+
 
         $scope.addItem = function (ev) {
+            $log.log("add XXX");
             if ($scope.profile.diseaseType == "Unilateral") {
                 if ($scope.profile.eye == "Right") {
                     if ($scope.profile.righteye.length >= 1) {
@@ -256,6 +258,7 @@ define(['./module'], function(module) {
                 }
             }
         };
+
         $scope.cleanSelection = function () {
             $scope.profile.lefteye = [];
             $scope.profile.righteye = [];
@@ -278,7 +281,7 @@ define(['./module'], function(module) {
             });
         };
 
-        $scope.submit = function (ev) {
+      $scope.submit = function (ev) {
 
             if ($scope.profile.diseaseType != "" && $scope.profile.gender != "" && $scope.profile.ethnicity != "" && $scope.profile.eye != ""
                 && $scope.profile.age != null && ($scope.profile.lefteye.length >= 1 || $scope.profile.righteye.length >= 1 || $scope.profile.botheye.length >= 1 )) {
@@ -312,6 +315,6 @@ define(['./module'], function(module) {
 
                 }
             }
-        };*/
+        };
             }]);
         });
