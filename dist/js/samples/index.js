@@ -3,6 +3,6 @@
  */
 define([
     './module',
-    './sample-ctrl'
+    './samples-ctrl'
 ], function () {
 });

@@ -20,6 +20,8 @@ define([
         }
         var packageData = uiLoader.getPackageData(data);
 
+
+
         requirejs(packageData.uiModulePaths, function () {
             uiLoader.setDependencies(arguments, app);  // add package UI modules
             requirejs(['requirejs-domready!'], function (document) {

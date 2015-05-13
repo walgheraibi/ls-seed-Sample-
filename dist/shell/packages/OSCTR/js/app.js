@@ -4,7 +4,8 @@
 define([
         'angular',
         './demoModule/index',
-        './sampleModule/index',
+        './samples/index',
+        './storage/index',
         './lookup/index',
         '../templates/templates.min'
     ]
@@ -12,7 +13,8 @@ define([
         return angular.module('OSCTR', [
             'OSCTR.templates',
             'OSCTR.app.demo',
-            'OSCTR.app.sample',
+            'OSCTR.app.samples',
+            'OSCTR.app.storage',
             'OSCTR.app.sampleLookup'
         ]).constant('CONFIG', {
             'package': 'OSCTR'

@@ -18,7 +18,7 @@ define([
         }]).config(['MenuProvider', function(MenuProvider) {
             MenuProvider.add({
                 state: 'OSCTR-samplelookup',
-                icon: 'star',
+                icon: 'search',
                 title: 'samplelookup'
             });
         }]);

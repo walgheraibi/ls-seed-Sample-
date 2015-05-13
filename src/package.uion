@@ -1,0 +1,55 @@
+{
+  "Home": "/OSCTR/samplelookup",
+
+  "Header": {
+    "show" : true,
+    "title": "LabShare",
+    "icon": "ui/images/labshare-heading.png",
+
+    "AuthMenu" : {
+
+      "show" : true,
+      "title" : "Welcome",
+      "icon" : "",
+
+      "MenuItems" : [
+        { "title" : "My Profile", "icon" : " ", "path" : "/profile" },
+        { "title" : "Logout", "icon" : " ", "path" : "/logout" }
+      ]
+
+    }
+
+  },
+
+  "LeftMenu" : {
+
+    "show" : true,
+    "title" : "Left Menu",
+    "icon" : "bars",
+
+    "MenuItems" : [
+      { "title" : "Left Menu Item 1", "icon" : "motorcycle", "path" : "/left-menu-item-1" },
+      { "title" : "Left Menu Item 2", "icon" : "hotel", "path" : "/left-menu-item-2" }
+    ]
+
+  },
+
+  "RightMenu" : {
+
+    "show" : true,
+    "title" : "Right Menu",
+    "icon" : "gear",
+
+    "MenuItems" : [
+
+      { "title" : "Right Menu Item 1", "icon" : "ship", "path" : "/right-menu-item-1" },
+      { "title" : "Right Menu Item 2", "icon" : "heartbeat", "path" : "/right-menu-item-2" }
+
+    ]
+
+  },
+
+  "Theme" : {
+
+  }
+}

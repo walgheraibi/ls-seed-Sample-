@@ -4,10 +4,9 @@
 
 
 define([
-    'angular',
-    'angular-ui-router'
+    'angular'
 ], function(angular) {
-    return angular.module('OSCTR.app.sampleLookup',['ui.router'])
+    return angular.module('OSCTR.app.sampleLookup',['ui.grid','ui.grid.selection'])
         .config(['$stateProvider', function ($stateProvider) {
             $stateProvider.state('OSCTR-samplelookup', {
                 url: 'OSCTR/samplelookup',
@@ -18,7 +17,7 @@ define([
         }]).config(['MenuProvider', function(MenuProvider) {
             MenuProvider.add({
                 state: 'OSCTR-samplelookup',
-                icon: 'star',
+                icon: 'search',
                 title: 'samplelookup'
             });
         }]);

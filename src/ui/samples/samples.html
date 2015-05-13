@@ -1,4 +1,4 @@
-<div ng-controller="OSCTR.sampleController as ctrl" layout="column">
+<div ng-controller="OSCTR.samplesController as ctrl" layout="column">
     <md-content class="md-padding" layout="column">
         <form ng-submit="$event.preventDefault()">
             <h1>Sample Submission</h1>
@@ -101,17 +101,17 @@
             <div layout-gt-sm="row" >
 
                 <md-select flex placeholder="Ethnicity" ng-model="profile.ethnicity">
-                    <md-option value="1">Mixed Race</md-option>
-                    <md-option value="2">Arctic (Siberian, Eskimo)</md-option>
-                    <md-option value="3">Caucasian (European)</md-option>
-                    <md-option value="4">Caucasian (Indian)</md-option>
-                    <md-option value="5">Caucasian (Middle East)</md-option>
-                    <md-option value="6">Indigenous Australian</md-option>
-                    <md-option value="7">Native American</md-option>
-                    <md-option value="8">North East Asian (Mongol, Tibetan, Korean Japanese, etc)</md-option>
-                    <md-option value="9">South East Asian (Chinese, Thai, Malay, Filipino, etc)</md-option>
-                    <md-option value="10">West African, Bushmen, Ethiopian</md-option>
-                    <md-option value="11">Other Race</md-option>
+                    <md-option value="Mixed Race">Mixed Race</md-option>
+                    <md-option value="Arctic (Siberian, Eskimo)">Arctic (Siberian, Eskimo)</md-option>
+                    <md-option value="Caucasian (European)">Caucasian (European)</md-option>
+                    <md-option value="Caucasian (Indian)">Caucasian (Indian)</md-option>
+                    <md-option value="Caucasian (Middle East)">Caucasian (Middle East)</md-option>
+                    <md-option value="Indigenous Australian">Indigenous Australian</md-option>
+                    <md-option value="Native American">Native American</md-option>
+                    <md-option value="North East Asian (Mongol, Tibetan, Korean Japanese, etc)">North East Asian (Mongol, Tibetan, Korean Japanese, etc)</md-option>
+                    <md-option value="South East Asian (Chinese, Thai, Malay, Filipino, etc)">South East Asian (Chinese, Thai, Malay, Filipino, etc)</md-option>
+                    <md-option value="West African, Bushmen, Ethiopian">West African, Bushmen, Ethiopian</md-option>
+                    <md-option value="Other Race">Other Race</md-option>
                 </md-select>
             </div>
 
@@ -123,7 +123,19 @@
 
                 <md-input-container flex>
                     <label>Comment</label>
-                    <input type="Text">
+                    <input ng-model="profile.comment" type="Text">
+                </md-input-container>
+
+                <md-input-container>
+                    <div class="box-col" style="width: 340px">
+                                <label>Upload file</label>
+                                <input name="files"
+                                       type="file"
+                                       kendo-upload
+                                       k-async="{ saveUrl: 'save', removeUrl: 'remove', autoUpload: true }"
+                                       k-select="onSelect"
+                                        />
+                            </div>
                 </md-input-container>
 
                 <div layout-gt-sm="row">

@@ -1,24 +1,107 @@
-{{helloworld}}
+<style type="text/css">
+    .selected {
+        background-color: lightgreen;
+    }
+</style>
+<div layo
+     ut="column" layout-margin layout-align="center center" ng-show="loading">
+    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+    <div flex style="color:#FFFFFF">Loading samples...please wait...</div>
+</div>
+<md-toolbar class="hedwig-theme">
+    <div class="md-toolbar-tools hedwig-theme" layout="row">
+        <!--left -->
+       <div layout="row">
+           <md-button  class="hedwig-theme"  layout="row"   layout-align="center center" aria-label="Apps">
+               <ng-md-icon icon="apps"  style="fill: white" size="24"></ng-md-icon>
+           </md-button>
+           <md-button  class="hedwig-theme"  layout="row"   layout-align="center center" aria-label="List">
+               <ng-md-icon icon="view_list"  style="fill: white" size="24"></ng-md-icon>
+           </md-button>
 
+           <span style="padding: 0 16px">Samples</span>
+
+       </div>
+       <span flex></span>
+       <md-button class="hedwig-theme"  ng-click="DetailAction($event)" layout="row"   layout-align="center center" style="width:100px;">
+           <!--IE need to use ng-attr-style-->
+         <span flex> </span>
+         <ng-md-icon icon="mode_edit"  style="fill: white" size="24"></ng-md-icon>
+       <span flex> </span>
+       <span>Details</span>
+       <span flex> </span>
+   </md-button>
+   <span style="padding: 0 5px"> </span>
+   <md-button  class="hedwig-theme md-raised md-primary" ng-click="ZipAction()" layout="row"   layout-align="center center" style="width:150px;" ng-disabled="!selectedRow">
+       <!--IE need to use ng-attr-style-->
+          <span flex> </span>
+           <ng-md-icon icon="archive"  style="fill: white" size="24"></ng-md-icon>
+           <span flex> </span>
+           <span>Download</span>
+           <span flex> </span>
+       </md-button>
+       <span style="padding: 0 5px"> </span>
+      <md-button  class="hedwig-theme" ng-click="refresh_samples_list()" layout="row"   layout-align="center center" style="width:150px;">
+
+         <span flex> </span>
+         <ng-md-icon icon="refresh"  style="fill: white" size="24"></ng-md-icon>
+         <span flex> </span>
+         <span>Refresh</span>
+         <span flex> </span>
+     </md-button>
+     <span style="padding: 0 4px"> </span>
+     <md-button  class="hedwig-theme  md-primary" ng-click="AddAction()" layout="row"   layout-align="center center" style="width:100px;">
+         <!--IE need to use ng-attr-style-->
+          <span flex> </span>
+           <ng-md-icon icon="add_circle"  style="fill: white" size="24"></ng-md-icon>
+           <span flex> </span>
+           <span>Add</span>
+           <span flex> </span>
+       </md-button>
+
+   </div>
+
+
+
+<!--
 <table class="table table-responsive table-hover table-bordered table-striped" ng-controller="OSCTR.samplelookupCtrl">
     <thead>
     <tr>
-        <th>Uni/Bi</th>
-        <th>Disease</th>
-        <th>Code</th>
+        <th>Disease Code</th>
+        <th>Disease Type</th>
+        <th>Affected Area</th>
+        <th>Disease Name</th>
         <th>Gender</th>
         <th>Age</th>
         <th>Ethnicity</th>
+        <th>comment</th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="it in stores">
-        <td>{{it.Uni}}</td>
-        <td>{{it.Disease}}</td>
-        <td>{{it.Code}}</td>
-        <td>{{it.Gender}}</td>
-        <td>{{it.Age}}</td>
-        <td>{{it.Ethnicity}}</td>
+
+
+    <tr ng-repeat="it in stores"  ng-click='selectSample($index)'
+        ng-class='{selected: $index==selectedRow}'>
+        <td>{{it.diseaseCode}}</td>
+        <td>{{it.diseaseType}}</td>
+        <td><p>{{it.eye2}}</p><p>{{it.eye}}</p></td>
+        <td> <div ng-repeat="diseaseL in it.lefteye"> <p>{{diseaseL}}</p></div>
+            <div ng-repeat="diseaseR in it.righteye"> <p>{{diseaseR}}</p></div>
+            <div ng-repeat="disease in it.botheye"> <p>{{disease}}</p></div>
+        </td>
+        <td>{{it.gender}}</td>
+        <td>{{it.age}}</td>
+        <td>{{it.ethnicity}}</td>
+        <td>{{it.comment}}</td>
     </tr>
     </tbody>
 </table>
+-->
+</md-toolbar>
+
+<div flex
+     ui-grid="gridOptions"
+     ui-grid-selection
+     class="grid"
+     style="border:none;">
+</div>
