@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>LabShare</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="./ui/js/bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="./ui/assets/app.css"/>
+  </head>
+
+  <body layout="column" ng-controller="UserController as ul">
+
+    <section data-ng-include=" 'ui/views/header.html' "></section>
+
+    <div flex layout="row">
+        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
+            <section data-ng-include=" 'ui/views/nav.html' "></section>
+        </md-sidenav>
+
+        <md-content flex layout="row" id="content">
+            <section flex layout="column" data-ng-view></section>
+        </md-content>
+    </div>
+    <!--
+    This is the application entrance require-config is the configuration file of requireJS.
+    -->
+    <script data-main="./ui/js/require-config" src="./ui/js/bower_components/requirejs/require.js"></script>
+
+  </body>
+</html>
+

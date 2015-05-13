@@ -1,0 +1,42 @@
+<div class="page" data-ng-controller="helloCtrl">
+
+    <section class="panel panel-default">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>Hello World Page</strong></div>
+        <div class="panel-body">
+            <p>{{hello}}</p>
+            <div data-ng-controller="testServiceCtrl"><p>{{message}}</p></div>
+        </div>
+    </section>
+    <section class="panel panel-default" data-ng-controller="searchDemoCtrl">
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>Search Demo</strong></div>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th><div class="th">
+                        Store Name
+                    </div></th>
+                    <th><div class="th">
+                        Price
+                    </div></th>
+                    <th><div class="th">
+                        Sales (in 7 days)
+                    </div></th>
+                    <th><div class="th">
+                        Rating
+                    </div></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="store in filteredStores">
+                    <td>{{store.name}}</td>
+                    <td>{{store.price}}</td>
+                    <td>{{store.sales}}</td>
+                    <td>{{store.rating}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
